@@ -260,4 +260,29 @@
     }
   });
 
+  /**
+ * Language switcher
+ */
+
+const langButtons = select('.lang-switch', true);
+  langButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const lang = button.getAttribute('data-lang');
+      switchLanguage(lang);
+    });
+  });
+  
+const switchLanguage = (targetLanguage) => {
+    const languageMap = {
+      en: 'index_en.html',
+      'zh-tw': 'index_zh-tw.html',
+    };
+  
+    if (languageMap[targetLanguage]) {
+      window.location.href = languageMap[targetLanguage];
+    } else {
+     console.error(`Unsupported language: ${targetLanguage}`);
+    }
+  };
+
 })()
