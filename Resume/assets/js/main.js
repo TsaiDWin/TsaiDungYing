@@ -264,25 +264,27 @@
  * Language switcher
  */
 
-const langButtons = select('.lang-switch', true);
-  langButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const lang = button.getAttribute('data-lang');
-      switchLanguage(lang);
-    });
+// 確保 querySelectorAll 取得所有語言切換按鈕
+const langButtons = document.querySelectorAll('.lang-switch');
+
+langButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const lang = button.getAttribute('data-lang');
+    switchLanguage(lang);
   });
-  
+});
+
 const switchLanguage = (targetLanguage) => {
-    const languageMap = {
-      en: 'index_en.html',
-      'zh-tw': 'index_zh-tw.html',
-    };
-  
-    if (languageMap[targetLanguage]) {
-      window.location.href = languageMap[targetLanguage];
-    } else {
-     console.error(`Unsupported language: ${targetLanguage}`);
-    }
+  const languageMap = {
+    en: 'index_en.html',
+    'zh-tw': 'index_zh-tw.html',
   };
+
+  if (languageMap[targetLanguage]) {
+    window.location.href = languageMap[targetLanguage];
+  } else {
+    console.error(`Unsupported language: ${targetLanguage}`);
+  }
+};
 
 })()
